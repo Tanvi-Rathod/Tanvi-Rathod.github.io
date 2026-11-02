@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Tanvi Rathod – Software Engineer">
+<meta property="og:description" content="Backend & fintech engineer: Python, Django, PostgreSQL, RabbitMQ, Elasticsearch.">
+<meta property="og:image" content="tanvi.jpg">
+<link rel="icon" href="tanvi.jpg">
+<title>Tanvi Rathod – Software Engineer</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Tanvi Rathod – Software Engineer (Backend & Fintech). Python, Django, PostgreSQL, RabbitMQ, Elasticsearch.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an engineer's API reference — each section is an endpoint, the hero is a live 200 OK response of her profile. */
+:root {
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --ink: #131a2b;
+  --muted: #5a6275;
+  --line: #dde1e8;
+  --accent: #2a52d6;
+  --accent-soft: #e6ecfd;
+  --ok: #0f8a5f;
+  --ok-soft: #e2f4ec;
+  --code-bg: #0f1626;
+  --code-fg: #d8deeb;
+  --code-key: #8fb0ff;
+  --code-str: #9fe0bd;
+  --code-num: #ffc98a;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c111c; --surface: #131a28; --ink: #e7ebf3; --muted: #9aa3b5; --line: #253047;
+    --accent: #84a2ff; --accent-soft: #1a2442; --ok: #4fd39a; --ok-soft: #12291f;
+    --code-bg: #080c15; --code-fg: #d8deeb; --code-key: #8fb0ff; --code-str: #9fe0bd; --code-num: #ffc98a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c111c; --surface: #131a28; --ink: #e7ebf3; --muted: #9aa3b5; --line: #253047;
+  --accent: #84a2ff; --accent-soft: #1a2442; --ok: #4fd39a; --ok-soft: #12291f;
+  --code-bg: #080c15; --code-fg: #d8deeb; --code-key: #8fb0ff; --code-str: #9fe0bd; --code-num: #ffc98a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1080px; margin: 0 auto; }
+
+/* nav */
+nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding-inline: max(16px, env(safe-area-inset-left, 0px)); }
+nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; flex-wrap: wrap; }
+.brand { font-family: var(--mono); font-size: 14px; color: var(--ink); text-decoration: none; font-weight: 500; }
+.brand span { color: var(--accent); }
+nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; flex-wrap: wrap; }
+nav ul a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; }
+nav ul a:hover { color: var(--ink); }
+
+/* hero */
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; padding-block: 64px 56px; }
+.hero > * { min-width: 0; }
+.id-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 3px solid var(--surface); box-shadow: 0 0 0 2px var(--accent); }
+.status { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 13px; color: var(--ok); background: var(--ok-soft); padding: 4px 10px; border-radius: 999px; }
+.status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--ok); }
+h1 { font-family: var(--display); font-weight: 800; font-size: clamp(44px, 7vw, 76px); line-height: 1; letter-spacing: -0.02em; margin: 18px 0 12px; text-wrap: balance; }
+.role { font-family: var(--display); font-weight: 500; font-size: clamp(20px, 2.4vw, 26px); color: var(--muted); margin: 0 0 18px; }
+.lede { max-width: 56ch; margin: 0 0 26px; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font: 500 15px var(--body); padding: 10px 16px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; cursor: pointer; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.btn:hover { border-color: var(--accent); }
+
+.response { background: var(--code-bg); color: var(--code-fg); border-radius: 12px; font-family: var(--mono); font-size: 13px; line-height: 1.7; overflow: hidden; box-shadow: 0 20px 40px -24px rgba(15, 22, 38, .55); }
+.response header { display: flex; justify-content: space-between; gap: 12px; padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,.08); font-size: 12px; flex-wrap: wrap; }
+.response header b { color: var(--code-str); font-weight: 500; }
+.response pre { margin: 0; padding: 16px; overflow-x: auto; }
+.k { color: var(--code-key); } .s { color: var(--code-str); } .n { color: var(--code-num); }
+
+/* metrics */
+.metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-bottom: 72px; }
+.metric { background: var(--surface); padding: 22px 20px; }
+.metric strong { display: block; font-family: var(--display); font-weight: 700; font-size: 34px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.metric span { color: var(--muted); font-size: 14px; }
+
+/* sections */
+section { padding-block: 24px 56px; scroll-margin-top: 70px; }
+.endpoint { font-family: var(--mono); font-size: 13px; color: var(--muted); letter-spacing: .02em; margin: 0 0 6px; }
+.endpoint .verb { color: var(--ok); font-weight: 500; margin-right: 6px; }
+h2 { font-family: var(--display); font-weight: 700; font-size: clamp(28px, 3.6vw, 38px); letter-spacing: -0.01em; margin: 0 0 28px; text-wrap: balance; }
+h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 0; }
+
+/* experience */
+.timeline { display: grid; gap: 0; border-left: 2px solid var(--line); margin-left: 6px; }
+.job { position: relative; padding: 0 0 36px 28px; }
+.job::before { content: ""; position: absolute; left: -8px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 3px solid var(--accent); }
+.job-head { display: flex; justify-content: space-between; gap: 8px 16px; flex-wrap: wrap; align-items: baseline; }
+.when { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.org { color: var(--muted); margin: 2px 0 12px; font-weight: 500; }
+.job ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; max-width: 75ch; }
+.job li::marker { color: var(--accent); }
+
+/* work cards */
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.card .result { font-family: var(--mono); font-size: 13px; color: var(--ok); background: var(--ok-soft); align-self: flex-start; padding: 3px 9px; border-radius: 6px; }
+.card p { margin: 0; color: var(--muted); font-size: 15px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; }
+.tags span { font-family: var(--mono); font-size: 12px; color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 5px; }
+
+/* projects */
+.projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.badge { font-family: var(--mono); font-size: 12px; color: var(--code-num); background: var(--code-bg); padding: 3px 9px; border-radius: 6px; align-self: flex-start; }
+
+/* skills */
+.skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 40px; }
+.skill-row { display: grid; grid-template-columns: 170px 1fr; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.skill-row > * { min-width: 0; }
+.skill-row dt { font-weight: 600; font-size: 15px; }
+.skill-row dd { margin: 0; color: var(--muted); font-size: 15px; }
+
+/* education + contact */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.contact { background: var(--code-bg); color: var(--code-fg); border-radius: 16px; padding: 40px; display: grid; gap: 20px; }
+.contact h2 { color: #fff; margin: 0; }
+.contact p { margin: 0; color: #aab3c5; max-width: 52ch; }
+.contact-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.email { font-family: var(--mono); font-size: 15px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); padding: 10px 14px; border-radius: 8px; user-select: all; overflow-wrap: anywhere; }
+.contact .btn { background: transparent; color: #fff; border-color: rgba(255,255,255,.25); }
+.contact .btn:hover { border-color: #fff; }
+.contact .btn.primary { background: #fff; color: #0f1626; border-color: #fff; }
+footer { padding-block: 32px 40px; color: var(--muted); font-size: 13px; font-family: var(--mono); }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; gap: 32px; padding-block: 40px; }
+  .metrics { grid-template-columns: repeat(2, 1fr); }
+  .cards { grid-template-columns: 1fr 1fr; }
+  .skills { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .cards, .projects, .split { grid-template-columns: 1fr; }
+  .skill-row { grid-template-columns: 1fr; gap: 2px; }
+  .contact { padding: 28px 20px; }
+  nav ul { gap: 12px; }
+  .metric strong { font-size: 28px; }
+}
+</style>
+<style>body{margin:0} img{max-width:100%}</style>
+</head>
+<body>
+
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">tanvi<span>.</span>rathod</a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+  <header class="hero">
+    <div>
+      <div class="id-row">
+        <img class="avatar" src="tanvi.jpg" alt="Tanvi Rathod" width="96" height="96">
+        <span class="status">Open to Software Engineer roles</span>
+      </div>
+      <h1>Tanvi Rathod</h1>
+      <p class="role">Software Engineer · Backend &amp; Fintech</p>
+      <p class="lede">I build secure, fast backend systems for lending. For the last 1.5+ years at Kuhoo Finance, an education-loan NBFC, I've owned the services behind loan origination, credit decisions, bank verification and dashboards, in Python, Django and PostgreSQL.</p>
+      <div class="actions">
+        <a class="btn primary" href="#contact">Get in touch</a>
+        <a class="btn" href="https://www.linkedin.com/in/-tanvi-rathod--/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/Tanvi-Rathod" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="response" aria-label="Profile summary shown as an API response">
+      <header><span>GET /api/v1/engineers/tanvi-rathod</span><b>200 OK · 10 ms</b></header>
+<pre>{
+  <span class="k">"role"</span>: <span class="s">"Software Engineer"</span>,
+  <span class="k">"company"</span>: <span class="s">"Kuhoo Finance (NBFC)"</span>,
+  <span class="k">"experience_years"</span>: <span class="n">1.5</span>,
+  <span class="k">"based_in"</span>: <span class="s">"Mumbai, India"</span>,
+  <span class="k">"stack"</span>: [<span class="s">"Python"</span>, <span class="s">"Django"</span>, <span class="s">"DRF"</span>,
+            <span class="s">"FastAPI"</span>, <span class="s">"PostgreSQL"</span>, <span class="s">"Redis"</span>,
+            <span class="s">"RabbitMQ"</span>, <span class="s">"Elasticsearch"</span>, <span class="s">"AWS"</span>],
+  <span class="k">"domains"</span>: [<span class="s">"lending"</span>, <span class="s">"credit"</span>, <span class="s">"KYC"</span>, <span class="s">"API security"</span>],
+  <span class="k">"education"</span>: <span class="s">"B.Tech CSE, Nirma University"</span>
+}</pre>
+    </div>
+  </header>
+
+  <div class="metrics" aria-label="Results">
+    <div class="metric"><strong>~90%</strong><span>faster dashboards after an event-driven redesign</span></div>
+    <div class="metric"><strong>60→10 ms</strong><span>Elasticsearch query latency</span></div>
+    <div class="metric"><strong>95%</strong><span>lower default risk from automated bank verification</span></div>
+    <div class="metric"><strong>30%</strong><span>faster underwriting with Account Aggregator</span></div>
+  </div>
+
+  <section id="work">
+    <p class="endpoint"><span class="verb">GET</span>/selected-work</p>
+    <h2>Selected work</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>Event-driven data lake</h3>
+        <span class="result">dashboard load −90%</span>
+        <p>Owned the data lake service behind every dashboard API. Moved loan processing to an async, event-driven setup on RabbitMQ so dashboards read pre-computed data instead of running heavy queries.</p>
+        <div class="tags"><span>RabbitMQ</span><span>Django</span><span>CI/CD</span></div>
+      </article>
+      <article class="card">
+        <h3>Credit decision engine</h3>
+        <span class="result">automated risk flags</span>
+        <p>Designed the rule engine that turns bureau data and deviation criteria into eligibility rules, personalised loan offers and risk flags for the credit team at underwriting.</p>
+        <div class="tags"><span>Python</span><span>LLD</span><span>Rules</span></div>
+      </article>
+      <article class="card">
+        <h3>Search relevance</h3>
+        <span class="result">incorrect results −90%</span>
+        <p>Reworked Elasticsearch relevance with production search data. Search drop-off fell 60% and query latency went from 60 ms to 10 ms.</p>
+        <div class="tags"><span>Elasticsearch</span><span>Query DSL</span></div>
+      </article>
+      <article class="card">
+        <h3>Secure credit checks</h3>
+        <span class="result">90% real-time success</span>
+        <p>Secured the CIBIL soft bureau-pull flow with hybrid AES/RSA encryption and mTLS, and encrypted documents at rest on AWS S3 with a unique key per file.</p>
+        <div class="tags"><span>mTLS</span><span>AES/RSA</span><span>AWS S3</span></div>
+      </article>
+      <article class="card">
+        <h3>Bank account verification</h3>
+        <span class="result">default risk −95%</span>
+        <p>Automated verification with penny-drop and penny-less APIs plus a fuzzy name match against KYC records, removing manual checks entirely.</p>
+        <div class="tags"><span>3rd-party APIs</span><span>KYC</span></div>
+      </article>
+      <article class="card">
+        <h3>Access control</h3>
+        <span class="result">field-level security</span>
+        <p>Built role-based field-level security and object-level authorization (IDOR protection) across loan, document and user APIs.</p>
+        <div class="tags"><span>DRF</span><span>RBAC</span><span>Security</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="experience">
+    <p class="endpoint"><span class="verb">GET</span>/experience</p>
+    <h2>Experience</h2>
+    <div class="timeline">
+      <div class="job">
+        <div class="job-head"><h3>Software Development Engineer I</h3><span class="when">Jun 2025 – Present</span></div>
+        <p class="org">Kuhoo Finance · Fintech NBFC (Education Loans) · Mumbai</p>
+        <ul>
+          <li>Owned the data lake service behind all dashboard APIs and re-architected loan processing on RabbitMQ, cutting dashboard load time by ~90%.</li>
+          <li>Designed the credit decision engine and integrated Setu Account Aggregator into the Loan Origination System, reducing underwriting turnaround by 30%.</li>
+          <li>Secured CIBIL bureau pulls with AES/RSA and mTLS, and automated bank verification, lowering default risk by 95%.</li>
+          <li>Built CI/CD pipelines for Elasticsearch and RabbitMQ, and Django REST APIs with reusable custom ORM query managers.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="job-head"><h3>Software Development Intern</h3><span class="when">Jan 2025 – Jun 2025</span></div>
+        <p class="org">Kuhoo Finance · Mumbai</p>
+        <ul>
+          <li>Shipped Elasticsearch fuzzy matching and auto-correct from my own LLD, fixing 60% of spelling-mismatch failures and cutting search drop-off by 70%.</li>
+          <li>Built REST APIs in Django, optimised PostgreSQL queries, added Redis caching and wrote unit tests.</li>
+          <li>Worked on the decision engine's bureau module, including a student–institute risk score.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="job-head"><h3>Web Development Intern</h3><span class="when">Jul 2023 – Aug 2023</span></div>
+        <p class="org">Weboin · Digital Marketing Agency</p>
+        <ul>
+          <li>Built the agency's digital marketing website as a React single-page application and made it fully mobile-responsive with CSS media queries.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <p class="endpoint"><span class="verb">GET</span>/projects</p>
+    <h2>Projects</h2>
+    <div class="projects">
+      <article class="card">
+        <span class="badge">NABARD Hackathon @ GFF 2026 · Top 10</span>
+        <h3>Khush-Hal: MSME Early-Warning Platform</h3>
+        <p>Built the async FastAPI and PostgreSQL backend for a platform that predicts MSME cash-flow risk and flags at-risk businesses for NABARD field officers.</p>
+        <div class="tags"><span>FastAPI</span><span>PostgreSQL</span><span>Async Python</span></div>
+      </article>
+      <article class="card">
+        <span class="badge">Weboin internship</span>
+        <h3>Digital Marketing Website</h3>
+        <p>A React single-page application with a component-based UI and media-query layouts that work across mobile, tablet and desktop.</p>
+        <div class="tags"><span>React.js</span><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills">
+    <p class="endpoint"><span class="verb">GET</span>/skills</p>
+    <h2>Skills</h2>
+    <dl class="skills">
+      <div class="skill-row"><dt>Languages</dt><dd>Python, SQL, JavaScript</dd></div>
+      <div class="skill-row"><dt>Backend</dt><dd>Django, Django REST Framework, FastAPI, REST API design, webhooks</dd></div>
+      <div class="skill-row"><dt>Data</dt><dd>PostgreSQL, MySQL, Redis, DB triggers, query optimisation</dd></div>
+      <div class="skill-row"><dt>Messaging</dt><dd>RabbitMQ, Celery, event-driven design, cron jobs</dd></div>
+      <div class="skill-row"><dt>Search &amp; AI</dt><dd>Elasticsearch, Query DSL, vector search, Llama 3 embeddings, Claude Code, Cursor</dd></div>
+      <div class="skill-row"><dt>Security</dt><dd>RBAC, field-level security, IDOR protection, AES/RSA, mTLS</dd></div>
+      <div class="skill-row"><dt>Cloud &amp; DevOps</dt><dd>AWS S3, Docker, CI/CD, Git</dd></div>
+      <div class="skill-row"><dt>Frontend</dt><dd>React.js, HTML5, CSS3, responsive design</dd></div>
+    </dl>
+  </section>
+
+  <section id="education">
+    <p class="endpoint"><span class="verb">GET</span>/education</p>
+    <h2>Education</h2>
+    <div class="split">
+      <article class="card">
+        <span class="when">2021 – 2025</span>
+        <h3>B.Tech, Computer Science and Engineering</h3>
+        <p>Nirma University, Ahmedabad · SPI 7.95 / 10</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <p class="endpoint" style="color:#8fb0ff"><span class="verb" style="color:#9fe0bd">POST</span>/contact</p>
+      <h2>Let's talk</h2>
+      <p>I'm looking for backend and software engineering roles, especially in fintech and AI-driven products. Email is the fastest way to reach me.</p>
+      <div class="contact-row">
+        <span class="email" id="email">rathodtanvi718@gmail.com</span>
+        <button class="btn primary" id="copy-email" type="button">Copy email</button>
+      </div>
+      <div class="contact-row">
+        <a class="btn" href="https://www.linkedin.com/in/-tanvi-rathod--/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/Tanvi-Rathod" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Tanvi Rathod · Mumbai, India</footer>
+</main>
+
+<script>
+  const copyBtn = document.getElementById('copy-email');
+  copyBtn.addEventListener('click', () => {
+    const text = document.getElementById('email').textContent.trim();
+    const done = () => { copyBtn.textContent = 'Copied'; setTimeout(() => (copyBtn.textContent = 'Copy email'), 1800); };
+    const fallback = () => {
+      const r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+      const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      copyBtn.textContent = 'Press Ctrl+C to copy';
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else { fallback(); }
+  });
+</script>
+
+</body>
+</html>
